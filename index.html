@@ -307,32 +307,119 @@
       filter: grayscale(20%) contrast(110%) brightness(90%);
     }
     
-    /* Working Hours */
+    /* Working Hours - Updated Position */
+    .hours-container {
+      position: relative;
+      margin-top: -100px;
+      z-index: 2;
+    }
+    
     .hours-card {
-      background: rgba(26, 26, 46, 0.8);
-      backdrop-filter: blur(10px);
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(15px);
       border-radius: 20px;
       padding: 30px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      margin-top: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+      border-top: 3px solid var(--neon-blue);
+    }
+    
+    .hours-card:hover {
+      border-color: var(--neon-pink);
+      box-shadow: 
+        0 25px 70px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba(255, 0, 255, 0.3);
     }
     
     .hours-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 20px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 25px;
       color: var(--neon-blue);
+      display: flex;
+      align-items: center;
+    }
+    
+    .hours-title i {
+      margin-right: 10px;
+      font-size: 1.3rem;
     }
     
     .hours-item {
       display: flex;
       justify-content: space-between;
-      padding: 10px 0;
+      padding: 12px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .hours-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 8px;
     }
     
     .hours-item:last-child {
       border-bottom: none;
+    }
+    
+    .hours-day {
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .hours-time {
+      color: var(--neon-blue);
+      font-weight: 500;
+    }
+    
+    /* Quote Section */
+    .quote-section {
+      padding: 60px 0;
+      position: relative;
+    }
+    
+    .quote-container {
+      background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(58, 26, 96, 0.8));
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .quote-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+    }
+    
+    .quote-text {
+      font-size: 1.8rem;
+      line-height: 1.6;
+      color: var(--star-white);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      font-weight: 500;
+    }
+    
+    .quote-author {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 1.2rem;
+      color: var(--neon-blue);
+      font-weight: 600;
     }
     
     /* Footer */
@@ -377,6 +464,12 @@
     }
     
     /* Responsive Design */
+    @media (max-width: 1200px) {
+      .hours-container {
+        margin-top: 40px;
+      }
+    }
+    
     @media (max-width: 992px) {
       .galaxy-text {
         font-size: 3.5rem;
@@ -399,6 +492,14 @@
         height: 400px;
         margin-bottom: 40px;
       }
+      
+      .hours-container {
+        margin-top: 40px;
+      }
+      
+      .quote-text {
+        font-size: 1.5rem;
+      }
     }
     
     @media (max-width: 768px) {
@@ -416,6 +517,18 @@
       
       .contact-card {
         padding: 30px 20px;
+      }
+      
+      .quote-container {
+        padding: 30px 20px;
+      }
+      
+      .quote-text {
+        font-size: 1.3rem;
+      }
+      
+      .hours-card {
+        padding: 25px 20px;
       }
     }
     
@@ -554,33 +667,46 @@
               <i class="fas fa-phone me-2"></i>ПОЗОВИТЕ НАС
             </a>
           </div>
-          
-          <!-- Working Hours -->
+        </div>
+      </div>
+      
+      <!-- Working Hours - Moved above quote -->
+      <div class="row mt-5">
+        <div class="col-lg-8">
+          <!-- Empty column for alignment -->
+        </div>
+        <div class="col-lg-4">
           <div class="hours-card">
             <h4 class="hours-title"><i class="far fa-clock me-2"></i>РАДНО ВРЕМЕ</h4>
             <div class="hours-item">
-              <span>Понедељак - Петак</span>
-              <span>09:00 - 20:00</span>
+              <span class="hours-day">Понедељак - Петак</span>
+              <span class="hours-time">09:00 - 20:00</span>
             </div>
             <div class="hours-item">
-              <span>Субота</span>
-              <span>10:00 - 18:00</span>
+              <span class="hours-day">Субота</span>
+              <span class="hours-time">10:00 - 18:00</span>
             </div>
             <div class="hours-item">
-              <span>Недеља</span>
-              <span>10:00 - 16:00</span>
+              <span class="hours-day">Недеља</span>
+              <span class="hours-time">10:00 - 16:00</span>
             </div>
           </div>
         </div>
       </div>
       
-      <div class="row mt-5 pt-5">
-        <div class="col-12 text-center">
-          <p class="lead" style="color: var(--neon-blue); font-size: 1.3rem;">
-            <i class="fas fa-quote-left me-2"></i>
-            Наша локација је ваша дестинација за савршену фризуру. Дођите да заједно освојимо галаксију.
-            <i class="fas fa-quote-right ms-2"></i>
-          </p>
+      <!-- Quote Section -->
+      <div class="row mt-5 pt-3">
+        <div class="col-12">
+          <div class="quote-container">
+            <p class="quote-text">
+              <i class="fas fa-quote-left me-3" style="color: var(--neon-blue); font-size: 2rem;"></i>
+              Наша локација је ваша дестинација за савршену фризуру. Дођите да заједно освојимо галаксију.
+              <i class="fas fa-quote-right ms-3" style="color: var(--neon-blue); font-size: 2rem;"></i>
+            </p>
+            <p class="quote-author">
+              — Galaksija Lepote Tim
+            </p>
+          </div>
         </div>
       </div>
     </div>
